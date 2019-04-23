@@ -1,2 +1,6 @@
 ---
 # vars file for app-tier
+packages:
+  - tomcat
+services:
+  - tomcat
