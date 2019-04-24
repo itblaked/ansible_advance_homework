@@ -1,6 +1,5 @@
 ---
 # vars file for roles/config-tower
-opentlc_ssh_key: /root/.ssh/blake@redhat.com_id_ed25519
 tower_host_server: tower1.{{tower_GUID}}.example.opentlc.com
 org_name: Default 
 workflow_template:
@@ -30,11 +29,7 @@ workflow_template:
 scm_branch: master 
 scm_url: "{{ github_repo }}"
 proj_name: "Homework Assignment"
-tower_user_name: admin 
-tower_password: r3dh4t1!
 ssh_cred_name: "Connect_to_workstation"
-user_cred_name: "cloud-user"
-user_cred_path: "/root/.ssh/openstack.pem"
 static_inventory_name: scm_inventory
 instance_group_name: osp
 workflow_template_name: cicd_workflow
