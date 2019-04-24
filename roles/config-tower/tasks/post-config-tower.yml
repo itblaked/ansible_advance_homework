@@ -10,6 +10,7 @@
     tower_password: "{{tower_password}}"
     ssh_key_data: "{{user_cred_path}}"
     username: "{{user_cred_name}}"
+    tower_verify_ssl: no
 
 - name: Create Static Inventory
   tower_inventory:
@@ -18,6 +19,7 @@
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
 
 - name: Create Group in static inventory
   tower_group:
@@ -27,6 +29,7 @@
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
 
 - name: Add workstation host to static inventory 
   tower_host:
@@ -36,6 +39,7 @@
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
 
 - name: Associate workstation host to workstation group
   tower_group:
@@ -46,6 +50,7 @@
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
     instance_filters: "name:workstation"
+    tower_verify_ssl: no
 
 - name: Create Tower Credential for opentlc
   tower_credential:
@@ -74,6 +79,7 @@
     scm_update_on_launch: "yes"
     tower_username: "{{ tower_user_name }}"
     organization: "{{ org_name }}"
+    tower_verify_ssl: no
 
 - name: Remove opentlc ssh key
   file:

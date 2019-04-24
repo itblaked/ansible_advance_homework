@@ -12,4 +12,5 @@
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
     schema: "{{workflow_template}}"
+    tower_verify_ssl: no
 

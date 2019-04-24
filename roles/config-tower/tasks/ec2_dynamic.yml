@@ -5,6 +5,7 @@
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
 
 - name: Create groups needed to deploy app
   tower_group:
@@ -14,6 +15,7 @@
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
   loop:
     - apps 
     - appdbs
