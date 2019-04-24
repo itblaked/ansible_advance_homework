@@ -1,11 +1,37 @@
 ---
 # vars file for roles/config-tower
+opentlc_ssh_key: /root/.ssh/blake@redhat.com_id_ed25519
+tower_host_server: tower1.{{tower_GUID}}.example.opentlc.com
 org_name: Default 
+workflow_template:
+  - project: "{{proj_name}}"
+    success:
+    - job_template: "{{job_template_aws_provision}}"
+      success:
+      - inventory_source: "{{ec2_inventory_source}}"
+        success:
+        - job_template: "{{job_template_aws_status_check}}"
+    - job_template: "{{job_template_name_osp_instances}}"
+      success:
+      - job_template: "{{job_template_name_3tier_app}}"
+        success:
+        - job_template: "{{job_template_smoke_osp}}"
+          failure:
+          - job_template: "{{job_template_name_osp_instances_delete}}"
+          success:
+          - inventory_source: "{{ec2_inventory_source}}"
+            success:
+            - job_template: "{{job_template_aws_ssh_keys}}"
+              success:
+              - job_template: "{{job_template_name_3tier_app_aws}}"
+                success:
+                - job_template: "{{job_template_smoke_aws}}"
+
 scm_branch: master 
 scm_url: "{{ github_repo }}"
 proj_name: "Homework Assignment"
-user_name: admin 
-password: r3dh4t1!
+tower_user_name: admin 
+tower_password: r3dh4t1!
 ssh_cred_name: "Connect_to_workstation"
 user_cred_name: "cloud-user"
 user_cred_path: "/root/.ssh/openstack.pem"
