@@ -40,7 +40,6 @@
   tower_host:
     name: "{{host_name}}"
     inventory: "{{static_inventory_name}}"
-    organization: "{{ org_name }}"
     tower_host: "{{ tower_host_server }}"
     tower_username: "{{tower_user_name}}"
     tower_password: "{{tower_password}}"
