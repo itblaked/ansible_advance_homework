@@ -1,4 +1,10 @@
 
+- name: Remove ansible mark from ssh key file in ssh_key_data
+  lineinfile:
+      path: "{{user_cred_path}}"
+      state: absent
+      regexp: 'ANSIBLE MANAGED'
+
 - name: Create Machine Credential to connect to workstation
   tower_credential:
     name: "{{ssh_cred_name}}"
