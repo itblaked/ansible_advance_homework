@@ -1,4 +1,5 @@
 - hosts: localhost
+  vars_files: secure_vars.yml
   gather_facts: false 
   become: yes 
   roles:
