@@ -68,13 +68,26 @@
     ssh_key_data: "{{opentlc_ssh_key}}"
     username: "{{ opentlc_login }}"
 
+- name: Create Tower Credential for scm
+  tower_credential:
+    name: "{{ scm_cred_name }}"
+    organization: "{{ org_name }}"
+    state: present
+    kind: scm
+    tower_host: "{{ tower_host_server }}"
+    tower_username: "{{tower_user_name}}"
+    tower_password: "{{tower_password}}"
+    tower_verify_ssl: no
+    ssh_key_data: "{{opentlc_ssh_key}}"
+    username: "{{ opentlc_login }}"
+
 - name: Create Homework Assignment project 
   tower_project:
     name: "{{ proj_name }}"
     scm_branch: "{{ scm_branch }}"
     tower_password: "{{ tower_password }}"
     tower_host: "{{ tower_host_server }}"
-    scm_credential: "{{ opentlc_cred_name }}"
+    scm_credential: "{{ scm_cred_name }}"
     scm_clean: "yes"
     scm_url: "{{ scm_url }}"
     state: present
