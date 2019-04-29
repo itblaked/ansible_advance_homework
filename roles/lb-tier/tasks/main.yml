@@ -5,6 +5,12 @@
     name: "{{ packages }}"
     state: present
 
+- name: Place haproxy config file
+  template:
+    src: ./haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+  notify: Restart Services
+
 - name: Enable Services
   service:
     name: "{{ item }}"
@@ -12,11 +18,6 @@
     state: started
   loop: "{{ packages }}"
 
-- name: Place haproxy config file
-  template:
-    src: ./haproxy.cfg.j2
-    dest: /etc/haproxy/haproxy.cfg
-  notify: Restart Services
 
 - name: Confirm that HAProxy is working
   uri:
