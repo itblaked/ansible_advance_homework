@@ -5,13 +5,6 @@
     name: "{{ packages }}"
     state: present
 
-- name: Enable services
-  service:
-    name: "{{ item }}"
-    enabled: yes
-    state: started
-  loop: "{{ packages }}"
-
 - name: Ensure tomcat folder exists
   file:
     path: "/usr/share/tomcat/webapps/{{ item }}"
@@ -28,6 +21,13 @@
     - ROOT
     - ansible
   notify: Restart Services
+
+- name: Enable services
+  service:
+    name: "{{ item }}"
+    enabled: yes
+    state: started
+  loop: "{{ services }}"
 
 - name: Confirm that Tomcat is responding
   uri:
