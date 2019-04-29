@@ -10,6 +10,7 @@
 - name: setup load-balancer tier
   hosts: frontends
   become: yes
+  force_handlers: True
   roles:
     - {name: base-config, tags: base-config}
     - {name: lb-tier, tags: [lbs, haproxy]}
