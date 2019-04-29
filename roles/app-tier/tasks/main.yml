@@ -13,6 +13,21 @@
     - ROOT
     - ansible
 
+- name: Disable services
+  service:
+    name: "{{ item }}"
+    enabled: no
+    state: stopped
+  loop: "{{ services }}"
+
+- name: Remove Tomcat index.html
+  file:
+    dest: "/usr/share/tomcat/webapps/{{ item }}/index.html"
+    state: absent
+  loop:
+    - ROOT
+    - ansible
+
 - name: Place Tomcat index.html
   template:
     src: index.html.j2
