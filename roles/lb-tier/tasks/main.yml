@@ -5,17 +5,17 @@
     name: "{{ packages }}"
     state: present
 
-- name: Disable Services
-  service:
-    name: "{{ item }}"
-    enabled: no
-    state: stopped
-  loop: "{{ services }}"
+# - name: Disable Services
+#   service:
+#     name: "{{ item }}"
+#     enabled: no
+#     state: stopped
+#   loop: "{{ services }}"
 
-- name: Remove haproxy config file
-  file:
-    state: absent
-    dest: /etc/haproxy/haproxy.cfg
+# - name: Remove haproxy config file
+#   file:
+#     state: absent
+#     dest: /etc/haproxy/haproxy.cfg
 
 - name: Place haproxy config file
   template:
