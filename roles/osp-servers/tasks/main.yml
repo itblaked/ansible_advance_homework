@@ -41,11 +41,6 @@
   register: server_start
   tags: start_servers
 
-- name: Show server_start result
-  debug:
-    var: server_start
-  tags: start_servers
-
 - name: Provision Floating IP's
   os_floating_ip:
     server: "{{ item.name }}"
@@ -56,17 +51,7 @@
   register: provisioned_fips
   tags: floating_ips
 
-- name: Print provisioned fips
-  debug:
-    var: provisioned_fips
-  tags: floating_ips
-
 - name: Check if port 22 is available
   wait_for_connection:
   register: instance_connection_state
-  tags: instance_ssh_state
-
-- name: Show outcome of ssh check
-  debug:
-    var: instance_connection_state
   tags: instance_ssh_state
