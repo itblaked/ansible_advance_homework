@@ -16,7 +16,7 @@
     name: "{{ item }}"
     enabled: yes
     state: started
-  loop: "{{ packages }}"
+  loop: "{{ services }}"
 
 
 - name: Confirm that HAProxy is working
