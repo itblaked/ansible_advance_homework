@@ -1,6 +1,4 @@
 ---
 # vars file for lb-tier
-packages:
-  - haproxy
-services:
-  - haproxy
+packages: haproxy
+services: haproxy

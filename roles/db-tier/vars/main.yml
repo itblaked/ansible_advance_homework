@@ -1,6 +1,4 @@
 ---
 # vars file for db-tier
-packages:
-  - postgresql-server
-services:
-  - postgresql
+packages: postgresql-server
+services: postgresql
