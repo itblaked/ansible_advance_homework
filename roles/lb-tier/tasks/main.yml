@@ -24,3 +24,4 @@
     return_content: yes
   register: haproxy_status
   failed_when: "'Ansible has done its job' not in haproxy_status.content"
+  ignore_errors: yes
